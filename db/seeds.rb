@@ -6,5 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-Fabricate.times(10, :user)
+User.create(name: 'test user 1', email: 'testuser1@email.com', password: 123456)
+User.create(name: 'test user 2', email: 'testuser2@email.com', password: 123456)
+User.create(name: 'test user 3', email: 'testuser3@email.com', password: 123456)
