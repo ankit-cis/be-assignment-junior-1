@@ -2,7 +2,7 @@
 
 module StaticsConcern
   def update_bills
-    @amount = params[:amount].to_i
+    @amount = params[:amount].to_f
     bills = current_user.bills.where(pay_to: params[:friend_id])
     update_bills_with_amount(bills)
     redirect_to root_path

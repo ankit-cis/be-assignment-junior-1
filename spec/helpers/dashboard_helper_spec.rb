@@ -20,7 +20,7 @@ RSpec.describe DashboardHelper, type: :helper do
 
     describe '#get_total_balance' do
       it 'returns the correct total balance' do
-        expect(helper.get_total_balance([expense1, expense2])).to eq("+$200")
+        expect(helper.get_total_balance([expense1, expense2])).to eq("+$200.0")
       end
     end
 

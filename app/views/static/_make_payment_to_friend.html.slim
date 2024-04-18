@@ -4,6 +4,6 @@
     p.friend_amount
     = hidden_field_tag :friend_id, nil, id: "friend-id-field"
     = label_tag :amount, "Amount"
-    = number_field_tag :amount, nil, class: "form-control", min: 1
+    = text_field_tag :amount, nil, class: "form-control", min: 1, step: "any", pattern: "[0-9]+(\.[0-9]+)?"
 
   = submit_tag "Pay Bills", class: "btn btn-primary mr-top"
