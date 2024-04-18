@@ -1,0 +1,15 @@
+.expenses-list
+  .expense-item
+    .expense_info
+      table.table.table-bordered.table-wth
+        thead
+          tr
+            th Friend's Name
+            th Amount
+            th Pay
+        tbody
+          - friends_you_owe.each do |friend|
+            tr
+              td= friend_to_pay(friend)
+              td= "$#{friends_bill_amount(friend)}"
+              td= link_to 'Pay Now', '#', data: { bs_toggle: "modal", bs_target: "#paymentModal", friend_id: friend, friend_amount: friends_bill_amount(friend), friend_name: friend_to_pay(friend) }, id: 'pay_to_friend'

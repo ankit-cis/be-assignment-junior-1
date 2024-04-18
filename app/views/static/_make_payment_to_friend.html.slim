@@ -1,0 +1,9 @@
+= form_tag pay_bills_path, method: :get do
+  .form-group
+    h4.friend_name
+    p.friend_amount
+    = hidden_field_tag :friend_id, nil, id: "friend-id-field"
+    = label_tag :amount, "Amount"
+    = number_field_tag :amount, nil, class: "form-control", min: 1
+
+  = submit_tag "Pay Bills", class: "btn btn-primary mr-top"

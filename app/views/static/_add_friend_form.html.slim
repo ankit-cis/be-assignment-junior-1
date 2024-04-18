@@ -1,0 +1,8 @@
+.row.friend-form
+  .col-md-6
+    .form-group
+      = label_tag "expense[friends][][friend_id]", "Name"
+      = select_tag "expense[friends][][friend_id]", options_from_collection_for_select(friends_list, :id, :name), { include_blank: true, class: "form-control" }
+
+  .col-md-2
+    = button_tag "Remove", type: "button", class: "btn btn-danger remove-friend-form mt-4"

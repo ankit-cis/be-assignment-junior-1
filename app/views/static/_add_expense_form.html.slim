@@ -1,0 +1,19 @@
+= form_for @expense, html: { class: "form" } do |f|
+  = f.hidden_field :created_by, value: current_user.id
+  .form-group
+    = f.label :amount
+    = f.number_field :amount, class: "form-control", required: true, min: 0
+
+  .form-group
+    = f.label :description
+    = f.text_field :description, class: "form-control", required: true
+
+    #add-friends-section.pd-top
+      h4 Add Friends
+      = render "add_friend_form"
+
+    = link_to "Add Another Friend", "#", id: "add-friend-link"
+
+    .modal-footer
+      button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
+      = f.submit "Save Changes", class: "btn btn-primary"

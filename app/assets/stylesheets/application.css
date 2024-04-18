@@ -15,3 +15,25 @@
  *= require 'jgrowl'
  *= require_self
  */
+
+
+.modal-wth {
+  width: 127% !important;
+}
+
+.dashboard-title {
+  color: black;
+  text-decoration: none;
+}
+
+.pd-top {
+  padding-top: 10px;
+}
+
+.mr-top {
+  margin-top: 10px;
+}
+
+.table-wth {
+  width: 200%;
+}

@@ -2,48 +2,28 @@
   aside.side-bar-area
     .friends-list
       p.friends-list-header FRIENDS
-      a.friend-name anbu
-      a.friend-name barath
+      - User.where.not(id: current_user.id).each do |friend|
+        a.friend-name= link_to friend.name, other_user_path(friend.id), class: 'dashboard-title'
   .main-area
     .top-bar
-      h1.top-bar-title Dashboard
+      h1.top-bar-title= link_to 'Dashboard', root_path, class: 'dashboard-title'
       .top-bar-actions
-        button.btn.btn-primary type="button"  Add an expense
-        button.btn.btn-secondary type="button"  Settle up
+        button.btn.btn-primary type="button" data-bs-toggle="modal" data-bs-target="#expenseModal"  Add an expense
+        button.btn.btn-secondary type="button" data-bs-toggle="modal" data-bs-target="#friendsListModal" Settle up
     .expenses-list
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
+      - @expenses.each do |expense|
+        - expense.bills.each do |bill|
+          .expense-item
+            .item-lhs.col-md-6
+              p= formatted_date(expense)
+              p= expense.description
+            .item-rhs.col-md-6
+              .you-details.col-md-6
+                p= who_paid_for_expense(expense)
+                p= "$#{expense.amount}"
+              .you-details.col-md-6
+                p= you_lent_or_borrow(bill)
+                p= lent_or_borrow_amount(bill, @person)
+= render 'expense_modal'
+= render 'friends_list_modal'
+= render 'payment_modal'
